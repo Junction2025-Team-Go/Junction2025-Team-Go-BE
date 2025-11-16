@@ -1,0 +1,6 @@
+[core]
+disable_usage_reporting = True
+
+[metrics]
+client_arch = arm
+

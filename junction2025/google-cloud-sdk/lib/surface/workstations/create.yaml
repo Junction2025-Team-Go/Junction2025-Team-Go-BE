@@ -1,0 +1,31 @@
+- release_tracks: [ALPHA, BETA]
+
+  help_text:
+    brief: |
+      Create a workstation.
+    description: |
+      Create a workstation.
+    examples: |
+      To create a workstation, run:
+
+        $ {command} WORKSTATION
+
+  arguments:
+    resource:
+      spec: !REF googlecloudsdk.command_lib.workstations.resources:workstation
+      help_text: |
+        Arguments and flags that specify the workstation to create.
+    params:
+    - arg_name: labels
+      api_field: workstation.labels
+      type: "googlecloudsdk.calliope.arg_parsers:ArgDict:"
+      help_text: |
+        Labels that are applied to the workstation and propagated to the underlying Compute Engine
+        resources.
+
+  request:
+    api_version: v1beta
+    collection: workstations.projects.locations.workstationClusters.workstationConfigs.workstations
+
+  async:
+    collection: workstations.projects.locations.operations
