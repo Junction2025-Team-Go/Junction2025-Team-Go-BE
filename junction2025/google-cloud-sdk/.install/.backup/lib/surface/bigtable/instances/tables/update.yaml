@@ -1,0 +1,67 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: Update an existing Cloud Bigtable table.
+    description: Update an existing new Cloud Bigtable table with the specified configuration.
+    examples: |
+      To enable deletion protection, run:
+
+      $ {command} my-table --instance=my-instance --deletion-protection
+
+      To disable deletion protection, run:
+
+      $ {command} my-table --instance=my-instance --no-deletion-protection
+
+  request:
+    collection: bigtableadmin.projects.instances.tables
+    method: patch
+    modify_request_hooks:
+    - googlecloudsdk.api_lib.bigtable.tables:RefreshUpdateMask
+
+  arguments:
+    resource:
+      help_text: Cloud Bigtable table to update.
+      spec: !REF googlecloudsdk.command_lib.bigtable.resources:table
+    params:
+    - api_field: table.deletionProtection
+      arg_name: deletion-protection
+      type: bool
+      help_text: |
+        Once specified, the table is deletion protected.
+
+  async:
+    collection: bigtableadmin.operations
+
+- release_tracks: [GA, BETA]
+
+  help_text:
+    brief: Update an existing Cloud Bigtable table.
+    description: Update an existing new Cloud Bigtable table with the specified configuration.
+    examples: |
+      To enable deletion protection, run:
+
+      $ {command} my-table --instance=my-instance --deletion-protection
+
+      To disable deletion protection, run:
+
+      $ {command} my-table --instance=my-instance --no-deletion-protection
+
+  request:
+    collection: bigtableadmin.projects.instances.tables
+    method: patch
+    modify_request_hooks:
+    - googlecloudsdk.api_lib.bigtable.tables:RefreshUpdateMask
+
+  arguments:
+    resource:
+      help_text: Cloud Bigtable table to update.
+      spec: !REF googlecloudsdk.command_lib.bigtable.resources:table
+    params:
+    - api_field: table.deletionProtection
+      arg_name: deletion-protection
+      type: bool
+      help_text: |
+        Once specified, the table is deletion protected.
+
+  async:
+    collection: bigtableadmin.operations
